@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mariam Audu Mshelia | Medical Virtual Assistant Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #1D9E75;
+    --teal-light: #E1F5EE;
+    --teal-dark: #0F6E56;
+    --gold: #BA7517;
+    --gold-light: #FAEEDA;
+    --navy: #042C53;
+    --navy-mid: #185FA5;
+    --cream: #FAFAF7;
+    --white: #ffffff;
+    --gray-text: #5F5E5A;
+    --gray-light: #F1EFE8;
+    --border: rgba(0,0,0,0.08);
+    --shadow: 0 4px 24px rgba(0,0,0,0.07);
+    --shadow-lg: 0 12px 48px rgba(0,0,0,0.12);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: #2C2C2A;
+    line-height: 1.7;
+  }
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 700;
+    color: var(--teal-dark);
+    letter-spacing: -0.5px;
+  }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a {
+    text-decoration: none; font-size: 14px; font-weight: 500;
+    color: var(--gray-text);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta {
+    background: var(--teal);
+    color: white !important;
+    padding: 8px 20px;
+    border-radius: 100px;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .nav-cta:hover { background: var(--teal-dark) !important; transform: translateY(-1px); }
+  .hero {
+    min-height: 100vh;
+    padding: 100px 5% 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .hero-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 5vw, 60px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .hero-text h1 span { color: var(--teal); }
+  .hero-subtitle {
+    font-size: 17px; font-weight: 500;
+    color: var(--teal-dark);
+    letter-spacing: 0.3px;
+    margin-bottom: 20px;
+  }
+  .hero-text p {
+    font-size: 16px; color: var(--gray-text);
+    line-height: 1.8; margin-bottom: 32px;
+    max-width: 480px;
+  }
+  .hero-badges {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin-bottom: 36px;
+  }
+  .badge {
+    background: var(--teal-light);
+    color: var(--teal-dark);
+    font-size: 13px; font-weight: 500;
+    padding: 6px 14px; border-radius: 100px;
+    border: 1px solid rgba(29,158,117,0.2);
+  }
+  .badge.gold {
+    background: var(--gold-light);
+    color: var(--gold);
+    border-color: rgba(186,117,23,0.2);
+  }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--teal);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 600; font-size: 15px;
+    transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(29,158,117,0.25); }
+  .btn-outline {
+    border: 2px solid var(--teal);
+    color: var(--teal);
+    padding: 12px 28px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 600; font-size: 15px;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { background: var(--teal-light); }
+  .hero-image {
+    display: flex; flex-direction: column; align-items: center; gap: 20px;
+  }
+  .avatar-frame {
+    width: 300px; height: 300px;
+    border-radius: 60% 40% 55% 45% / 45% 55% 45% 55%;
+    background: linear-gradient(135deg, var(--teal-light), #9FE1CB);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    position: relative;
+    border: 4px solid var(--teal);
+    box-shadow: var(--shadow-lg);
+  }
+  .avatar-initials {
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    font-weight: 700;
+    color: var(--teal-dark);
+    opacity: 0.7;
+  }
+  .stats-row { display: flex; gap: 20px; }
+  .stat-pill {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 14px 20px;
+    text-align: center;
+    box-shadow: var(--shadow);
+  }
+  .stat-pill .num {
+    font-size: 24px; font-weight: 700;
+    color: var(--teal);
+    font-family: 'Playfair Display', serif;
+  }
+  .stat-pill .lbl { font-size: 12px; color: var(--gray-text); font-weight: 500; }
+  section { padding: 80px 5%; max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .section-desc { font-size: 16px; color: var(--gray-text); max-width: 600px; margin-bottom: 48px; }
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--teal), transparent);
+    margin: 0 5%;
+    opacity: 0.25;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .service-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: default;
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: var(--teal);
+  }
+  .service-card.gold-accent::before { background: var(--gold); }
+  .service-card.navy-accent::before { background: var(--navy-mid); }
+  .service-icon {
+    width: 48px; height: 48px;
+    background: var(--teal-light);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .service-card.gold-accent .service-icon { background: var(--gold-light); }
+  .service-card.navy-accent .service-icon { background: #E6F1FB; }
+  .service-card h3 {
+    font-size: 18px; font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 12px;
+    font-family: 'Playfair Display', serif;
+  }
+  .service-card p { font-size: 14px; color: var(--gray-text); line-height: 1.7; }
+  .service-tools { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+  .tool-tag {
+    background: var(--gray-light);
+    color: var(--gray-text);
+    font-size: 11px; font-weight: 500;
+    padding: 3px 10px; border-radius: 100px;
+  }
+  .timeline { position: relative; padding-left: 32px; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 8px; top: 8px; bottom: 8px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--teal), var(--teal-light));
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute; left: -40px; top: 32px;
+    width: 14px; height: 14px;
+    background: var(--teal);
+    border-radius: 50%;
+    border: 3px solid var(--cream);
+    box-shadow: 0 0 0 2px var(--teal);
+  }
+  .job-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    flex-wrap: wrap; gap: 8px;
+    margin-bottom: 16px;
+  }
+  .job-title { font-size: 17px; font-weight: 600; color: var(--navy); }
+  .job-company { font-size: 14px; font-weight: 500; color: var(--teal-dark); margin-top: 2px; }
+  .job-date {
+    background: var(--teal-light);
+    color: var(--teal-dark);
+    font-size: 12px; font-weight: 600;
+    padding: 4px 12px; border-radius: 100px;
+    white-space: nowrap;
+  }
+  .job-duties { list-style: none; padding: 0; }
+  .job-duties li {
+    font-size: 14px; color: var(--gray-text);
+    padding: 4px 0 4px 20px;
+    position: relative;
+    line-height: 1.6;
+  }
+  .job-duties li::before {
+    content: '▸';
+    position: absolute; left: 0;
+    color: var(--teal);
+    font-size: 12px;
+  }
+  .samples-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .sample-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .sample-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .sample-preview {
+    height: 160px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .sample-preview.teal-bg { background: linear-gradient(135deg, #E1F5EE, #9FE1CB); }
+  .sample-preview.gold-bg { background: linear-gradient(135deg, #FAEEDA, #FAC775); }
+  .sample-preview.navy-bg { background: linear-gradient(135deg, #E6F1FB, #B5D4F4); }
+  .sample-preview.coral-bg { background: linear-gradient(135deg, #FAECE7, #F5C4B3); }
+  .sample-preview.green-bg { background: linear-gradient(135deg, #EAF3DE, #C0DD97); }
+  .sample-preview.purple-bg { background: linear-gradient(135deg, #EEEDFE, #CECBF6); }
+  .sample-label {
+    position: absolute; bottom: 10px; left: 10px;
+    font-size: 10px; font-weight: 600; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--teal-dark);
+    background: rgba(255,255,255,0.9); padding: 3px 10px; border-radius: 100px;
+  }
+  .sample-body { padding: 24px; }
+  .sample-body h3 {
+    font-size: 16px; font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 8px;
+    font-family: 'Playfair Display', serif;
+  }
+  .sample-body p { font-size: 13px; color: var(--gray-text); line-height: 1.6; margin-bottom: 14px; }
+  .sample-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .sample-tag {
+    background: var(--teal-light);
+    color: var(--teal-dark);
+    font-size: 11px; font-weight: 500;
+    padding: 3px 10px; border-radius: 100px;
+  }
+  .skills-section-bg {
+    background: var(--navy);
+    padding: 80px 5%;
+    margin: 0;
+  }
+  .skills-section-bg .section-label { color: #9FE1CB; }
+  .skills-section-bg .section-title { color: white; }
+  .skills-section-bg .section-desc { color: rgba(255,255,255,0.6); }
+  .skills-container { max-width: 1200px; margin: 0 auto; }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+  }
+  .skill-item {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 18px 20px;
+    display: flex; align-items: center; gap: 12px;
+    transition: background 0.2s;
+    cursor: default;
+  }
+  .skill-item:hover { background: rgba(29,158,117,0.15); border-color: var(--teal); }
+  .skill-dot { width: 8px; height: 8px; background: var(--teal); border-radius: 50%; flex-shrink: 0; }
+  .skill-item span { font-size: 14px; color: rgba(255,255,255,0.85); font-weight: 400; }
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .edu-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex; gap: 16px;
+    transition: box-shadow 0.2s;
+  }
+  .edu-card:hover { box-shadow: var(--shadow); }
+  .edu-icon {
+    width: 42px; height: 42px;
+    background: var(--teal-light);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
+  }
+  .edu-icon.gold { background: var(--gold-light); }
+  .edu-body h4 { font-size: 14px; font-weight: 600; color: var(--navy); line-height: 1.4; margin-bottom: 4px; }
+  .edu-body p { font-size: 12px; color: var(--gray-text); }
+  .edu-date { font-size: 11px; font-weight: 600; color: var(--teal); margin-top: 6px; display: block; }
+  .tools-grid { display: flex; flex-wrap: wrap; gap: 12px; }
+  .tool-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 20px;
+    font-size: 14px; font-weight: 500;
+    color: var(--navy);
+    display: flex; align-items: center; gap: 10px;
+    transition: all 0.2s;
+  }
+  .tool-card:hover { border-color: var(--teal); color: var(--teal-dark); background: var(--teal-light); }
+  .tool-card .icon { font-size: 18px; }
+  .award-banner {
+    background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+    border-radius: 20px;
+    padding: 40px;
+    display: flex; align-items: center; gap: 32px;
+    color: white;
+    margin-bottom: 48px;
+  }
+  .award-icon { font-size: 60px; flex-shrink: 0; }
+  .award-text h3 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+  .award-text p { font-size: 15px; opacity: 0.8; }
+  .contact-section { background: var(--teal-dark); padding: 80px 5%; text-align: center; }
+  .contact-inner { max-width: 700px; margin: 0 auto; }
+  .contact-section .section-label { color: #9FE1CB; justify-content: center; display: block; }
+  .contact-section .section-title { color: white; text-align: center; }
+  .contact-section p { color: rgba(255,255,255,0.7); font-size: 17px; margin-bottom: 40px; }
+  .contact-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-bottom: 40px; }
+  .contact-chip {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 100px;
+    font-size: 15px;
+    text-decoration: none;
+    display: flex; align-items: center; gap: 8px;
+    transition: background 0.2s;
+  }
+  .contact-chip:hover { background: rgba(255,255,255,0.2); }
+  .availability-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(29,158,117,0.3);
+    border: 1px solid rgba(29,158,117,0.5);
+    color: #9FE1CB;
+    padding: 8px 20px; border-radius: 100px;
+    font-size: 14px; font-weight: 500;
+  }
+  .green-dot {
+    width: 8px; height: 8px;
+    background: #5DCAA5;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 24px;
+    font-size: 13px;
+  }
+  footer a { color: #9FE1CB; text-decoration: none; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up { animation: fadeUp 0.7s ease forwards; }
+  .fade-up:nth-child(2) { animation-delay: 0.1s; }
+  .fade-up:nth-child(3) { animation-delay: 0.2s; }
+  .fade-up:nth-child(4) { animation-delay: 0.3s; }
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; gap: 40px; padding-top: 80px; text-align: center; }
+    .hero-text p { margin: 0 auto 32px; }
+    .hero-badges { justify-content: center; }
+    .hero-ctas { justify-content: center; }
+    .hero-image { order: -1; }
+    .avatar-frame { width: 200px; height: 200px; }
+    .avatar-initials { font-size: 52px; }
+    .nav-links { display: none; }
+    .award-banner { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Mariam A. Mshelia</div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#experience">Experience</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#education">Education</a>
+    <a href="#contact" class="nav-cta">Hire Me</a>
+  </div>
+</nav>
+
+<div style="background: var(--cream);">
+  <div class="hero">
+    <div class="hero-text fade-up">
+      <p class="section-label">Medical Virtual Assistant & Healthcare Admin Specialist</p>
+      <h1>Mariam <span>Audu</span><br>Mshelia</h1>
+      <p class="hero-subtitle">5+ Years Supporting Healthcare Professionals Remotely</p>
+      <p>Detail-oriented medical virtual assistant skilled in patient coordination, medical records management, billing, and administrative operations. Adept at international healthcare standards with a commitment to confidentiality, accuracy, and efficiency.</p>
+      <div class="hero-badges">
+        <span class="badge">🏥 HIPAA Compliant</span>
+        <span class="badge">📋 EMR/EHR Expert</span>
+        <span class="badge gold">🏆 Best Graduating Student</span>
+        <span class="badge">🌍 Multi-Timezone Available</span>
+      </div>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary">Get In Touch →</a>
+        <a href="#portfolio" class="btn-outline">View Work Samples</a>
+      </div>
+    </div>
+    <div class="hero-image fade-up">
+      <div class="avatar-frame">
+        <div class="avatar-initials">MAM</div>
+      </div>
+      <div class="stats-row">
+        <div class="stat-pill">
+          <div class="num">5+</div>
+          <div class="lbl">Years Exp.</div>
+        </div>
+        <div class="stat-pill">
+          <div class="num">3</div>
+          <div class="lbl">Employers</div>
+        </div>
+        <div class="stat-pill">
+          <div class="num">6</div>
+          <div class="lbl">Credentials</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<section id="services">
+  <p class="section-label">What I Offer</p>
+  <h2 class="section-title">Services & Expertise</h2>
+  <p class="section-desc">Comprehensive healthcare administrative support delivered remotely with precision and professionalism.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">📋</div>
+      <h3>Medical Records Management</h3>
+      <p>Organizing, maintaining, and securing patient records with strict adherence to healthcare regulations. Experience with EMR/EHR systems and digital documentation workflows.</p>
+      <div class="service-tools">
+        <span class="tool-tag">EMR/EHR</span>
+        <span class="tool-tag">HIPAA</span>
+        <span class="tool-tag">CPT/ICD Coding</span>
+      </div>
+    </div>
+    <div class="service-card gold-accent">
+      <div class="service-icon">💳</div>
+      <h3>Medical Billing & Coding</h3>
+      <p>Accurate medical billing using CPT and ICD coding standards. Processing claims, verifying insurance information, and managing billing records to support revenue cycles.</p>
+      <div class="service-tools">
+        <span class="tool-tag">CPT</span>
+        <span class="tool-tag">ICD-10</span>
+        <span class="tool-tag">Billing Software</span>
+      </div>
+    </div>
+    <div class="service-card navy-accent">
+      <div class="service-icon">🩺</div>
+      <h3>Telehealth & Patient Support</h3>
+      <p>Facilitating virtual consultations, patient scheduling, and coordination between patients, staff, and providers. Skilled in telehealth platform management.</p>
+      <div class="service-tools">
+        <span class="tool-tag">Telehealth Platforms</span>
+        <span class="tool-tag">Patient Coordination</span>
+        <span class="tool-tag">Scheduling</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📧</div>
+      <h3>Healthcare Administration</h3>
+      <p>Full-spectrum administrative support including email management, appointment scheduling, data entry, office coordination, and workflow optimization for healthcare practices.</p>
+      <div class="service-tools">
+        <span class="tool-tag">CRM Management</span>
+        <span class="tool-tag">Calendar Tools</span>
+        <span class="tool-tag">Office Admin</span>
+      </div>
+    </div>
+    <div class="service-card gold-accent">
+      <div class="service-icon">✍️</div>
+      <h3>Medical Transcription</h3>
+      <p>Accurate transcription of medical notes, dictations, and reports. Converting audio recordings into structured documents following medical terminology standards.</p>
+      <div class="service-tools">
+        <span class="tool-tag">Medical Terminology</span>
+        <span class="tool-tag">Clinical Notes</span>
+        <span class="tool-tag">Accuracy Focus</span>
+      </div>
+    </div>
+    <div class="service-card navy-accent">
+      <div class="service-icon">📊</div>
+      <h3>Healthcare Content & Branding</h3>
+      <p>Creating professional healthcare content for websites, social media, and internal communications. Experience in healthcare branding and digital marketing strategy.</p>
+      <div class="service-tools">
+        <span class="tool-tag">Content Creation</span>
+        <span class="tool-tag">Healthcare Branding</span>
+        <span class="tool-tag">Social Media</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="experience">
+  <p class="section-label">Career History</p>
+  <h2 class="section-title">Work Experience</h2>
+  <p class="section-desc">A track record of delivering reliable, efficient administrative support across healthcare and pharmaceutical sectors.</p>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="job-header">
+        <div>
+          <div class="job-title">Virtual Assistant</div>
+          <div class="job-company">Blossom Pharmaceutical</div>
+        </div>
+        <span class="job-date">Jan 2016 – 2021</span>
+      </div>
+      <ul class="job-duties">
+        <li>Managed emails, scheduled appointments, handled data entry, and organized records to ensure smooth daily operations</li>
+        <li>Responded to customer inquiries, processed orders, and provided support to enhance customer satisfaction and retention</li>
+        <li>Assisted in tracking stock levels, coordinating with suppliers, and ensuring timely restocking to maintain efficient pharmacy operations</li>
+      </ul>
+    </div>
+    <div class="timeline-item">
+      <div class="job-header">
+        <div>
+          <div class="job-title">Healthcare Administrative Assistant</div>
+          <div class="job-company">ABUTh (Ahmadu Bello University Teaching Hospital)</div>
+        </div>
+        <span class="job-date">Feb 2021 – 2022</span>
+      </div>
+      <ul class="job-duties">
+        <li>Organized and maintained medical records, appointments, and billing information for a major teaching hospital</li>
+        <li>Handled emails, scheduling, and coordinating office tasks to ensure smooth operations across departments</li>
+        <li>Ensured adherence to healthcare regulations and facilitated communication between patients, staff, and providers</li>
+      </ul>
+    </div>
+    <div class="timeline-item">
+      <div class="job-header">
+        <div>
+          <div class="job-title">Social Media Manager</div>
+          <div class="job-company">Leaftally</div>
+        </div>
+        <span class="job-date">Feb 2025 – Dec 2025</span>
+      </div>
+      <ul class="job-duties">
+        <li>Led content creation and scheduling — planned, created, and published engaging content across digital platforms</li>
+        <li>Managed community engagement, interactions, and built meaningful audience relationships</li>
+        <li>Tracked analytics and performance metrics, optimized growth strategies to improve reach and engagement</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="portfolio">
+  <p class="section-label">Work Samples</p>
+  <h2 class="section-title">Portfolio Highlights</h2>
+  <p class="section-desc">Examples of the types of deliverables and work outputs I produce for healthcare clients.</p>
+  <div class="samples-grid">
+    <div class="sample-card">
+      <div class="sample-preview teal-bg">
+        📁
+        <span class="sample-label">Records Management</span>
+      </div>
+      <div class="sample-body">
+        <h3>Patient Records Organization System</h3>
+        <p>Developed and implemented a structured digital records management workflow for a 200+ patient database, improving retrieval time and compliance with HIPAA standards.</p>
+        <div class="sample-tags">
+          <span class="sample-tag">EMR/EHR</span>
+          <span class="sample-tag">HIPAA</span>
+          <span class="sample-tag">Data Management</span>
+        </div>
+      </div>
+    </div>
+    <div class="sample-card">
+      <div class="sample-preview gold-bg">
+        🧾
+        <span class="sample-label">Billing & Coding</span>
+      </div>
+      <div class="sample-body">
+        <h3>Medical Billing & Claims Processing</h3>
+        <p>Processed medical claims using CPT and ICD-10 coding, managed billing cycles, and reduced claim rejection rates through accurate documentation and follow-up.</p>
+        <div class="sample-tags">
+          <span class="sample-tag">CPT Coding</span>
+          <span class="sample-tag">ICD-10</span>
+          <span class="sample-tag">Claims</span>
+        </div>
+      </div>
+    </div>
+    <div class="sample-card">
+      <div class="sample-preview navy-bg">
+        📅
+        <span class="sample-label">Scheduling & Admin</span>
+      </div>
+      <div class="sample-body">
+        <h3>Multi-Provider Appointment Scheduling</h3>
+        <p>Managed complex appointment calendars for multiple healthcare providers, reducing scheduling conflicts and no-show rates through automated reminders and follow-ups.</p>
+        <div class="sample-tags">
+          <span class="sample-tag">Calendar Tools</span>
+          <span class="sample-tag">Patient Coordination</span>
+          <span class="sample-tag">Telehealth</span>
+        </div>
+      </div>
+    </div>
+    <div class="sample-card">
+      <div class="sample-preview coral-bg">
+        ✉️
+        <span class="sample-label">Communication</span>
+      </div>
+      <div class="sample-body">
+        <h3>Healthcare Email Management</h3>
+        <p>Designed and maintained professional email communication templates for patient outreach, appointment reminders, and provider-to-provider correspondence.</p>
+        <div class="sample-tags">
+          <span class="sample-tag">CRM</span>
+          <span class="sample-tag">Email Systems</span>
+          <span class="sample-tag">Templates</span>
+        </div>
+      </div>
+    </div>
+    <div class="sample-card">
+      <div class="sample-preview green-bg">
+        🖊️
+        <span class="sample-label">Transcription</span>
+      </div>
+      <div class="sample-body">
+        <h3>Clinical Notes & Medical Transcription</h3>
+        <p>Transcribed physician dictations, clinical notes, and procedure reports with high accuracy, maintaining proper medical terminology and documentation standards.</p>
+        <div class="sample-tags">
+          <span class="sample-tag">Medical Transcription</span>
+          <span class="sample-tag">Clinical Notes</span>
+          <span class="sample-tag">Accuracy</span>
+        </div>
+      </div>
+    </div>
+    <div class="sample-card">
+      <div class="sample-preview purple-bg">
+        📱
+        <span class="sample-label">Content & Branding</span>
+      </div>
+      <div class="sample-body">
+        <h3>Healthcare Social Media & Branding</h3>
+        <p>Created a complete content strategy and social media presence for a healthcare brand, growing audience engagement and establishing a professional digital identity.</p>
+        <div class="sample-tags">
+          <span class="sample-tag">Content Strategy</span>
+          <span class="sample-tag">Healthcare Branding</span>
+          <span class="sample-tag">Analytics</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="skills-section-bg">
+  <div class="skills-container">
+    <p class="section-label">Core Competencies</p>
+    <h2 class="section-title">Skills & Tools</h2>
+    <p class="section-desc">A comprehensive skillset built across 5+ years in healthcare administration and virtual support.</p>
+    <div class="skills-grid">
+      <div class="skill-item"><div class="skill-dot"></div><span>Telehealth Support</span></div>
+      <div class="skill-item"><div class="skill-dot"></div><span>EMR / EHR Systems</span></div>
+      <div class="skill-item"><div class="skill-dot"></div><span>CPT / ICD Coding</span></div>
+      <div class="skill-item"><div class="skill-dot"></div><span>HIPAA Compliance</span></div>
+      <div class="skill-item"><div class="skill-dot"></div><span>Medical Transcription</span></div>
+      <div class="skill-item"><div class="skill-dot"></div><span>Workflow Optimization</span></div>
+      <div class="skill-item"><div class="skill-dot"></div><span>Content Creation</span></div>
+      <div class="skill-item"><div class="skill-dot"></div><span>Adaptability & Creativity</span></div>
+      <div class="skill-item"><div class="skill-dot"></div><span>Calendar / CRM Management</span></div>
+      <div class="skill-item"><div class="skill-dot"></div><span>Office Administration</span></div>
+      <div class="skill-item"><div class="skill-dot"></div><span>Healthcare Branding</span></div>
+      <div class="skill-item"><div class="skill-dot"></div><span>Attention to Detail</span></div>
+      <div class="skill-item"><div class="skill-dot"></div><span>Customer Support</span></div>
+      <div class="skill-item"><div class="skill-dot"></div><span>Tech & Tool Proficiency</span></div>
+      <div class="skill-item"><div class="skill-dot"></div><span>Time Management</span></div>
+      <div class="skill-item"><div class="skill-dot"></div><span>Data Entry & Records</span></div>
+    </div>
+  </div>
+</div>
+
+<section id="education">
+  <p class="section-label">Academic Background</p>
+  <h2 class="section-title">Education & Certifications</h2>
+  <p class="section-desc">Continuously expanding knowledge in healthcare administration, medical informatics, and professional development.</p>
+  <div class="award-banner">
+    <div class="award-icon">🏆</div>
+    <div class="award-text">
+      <h3>Best Graduating Student Award</h3>
+      <p>Received the Best Graduating Student Award for outstanding academic performance at Ahmadu Bello University Teaching Hospital — a testament to dedication and excellence in health information management.</p>
+    </div>
+  </div>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-icon">🎓</div>
+      <div class="edu-body">
+        <h4>Associate Degree in Health Information Management</h4>
+        <p>Ahmadu Bello University Teaching Hospital</p>
+        <span class="edu-date">Sep 2021 – 2024</span>
+      </div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-icon gold">🛡️</div>
+      <div class="edu-body">
+        <h4>Certificate in Information Management Strategy & Data Protection</h4>
+        <p>Professional Certification</p>
+        <span class="edu-date">Aug 2022 – Jan 2023</span>
+      </div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-icon">💻</div>
+      <div class="edu-body">
+        <h4>Certificate in Virtual Assistant Role</h4>
+        <p>Professional Development</p>
+        <span class="edu-date">Dec 2024 – Feb 2025</span>
+      </div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-icon gold">📝</div>
+      <div class="edu-body">
+        <h4>Diploma in Medical Secretary</h4>
+        <p>Professional Qualification</p>
+        <span class="edu-date">Jan 2024 – Feb 2025</span>
+      </div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-icon">💳</div>
+      <div class="edu-body">
+        <h4>Diploma in Medical Billing and Coding</h4>
+        <p>Healthcare Administration</p>
+        <span class="edu-date">Jan 2025 – Mar 2026</span>
+      </div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-icon gold">🌍</div>
+      <div class="edu-body">
+        <h4>Diploma in Global Health Nursing</h4>
+        <p>Healthcare Sciences</p>
+        <span class="edu-date">Aug 2022 – Apr 2023</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section>
+  <p class="section-label">Technologies</p>
+  <h2 class="section-title">Tools I Work With</h2>
+  <p class="section-desc">Proficient with the modern tools healthcare virtual assistants are expected to use.</p>
+  <div class="tools-grid">
+    <div class="tool-card"><span class="icon">🏥</span>EMR / EHR Systems</div>
+    <div class="tool-card"><span class="icon">📊</span>Google Workspace</div>
+    <div class="tool-card"><span class="icon">📧</span>Microsoft Office 365</div>
+    <div class="tool-card"><span class="icon">📅</span>Calendly / Acuity</div>
+    <div class="tool-card"><span class="icon">💬</span>Slack / Zoom / Teams</div>
+    <div class="tool-card"><span class="icon">🗃️</span>CRM Platforms</div>
+    <div class="tool-card"><span class="icon">🔐</span>HIPAA-Compliant Tools</div>
+    <div class="tool-card"><span class="icon">📋</span>Practice Management Software</div>
+    <div class="tool-card"><span class="icon">📱</span>Social Media Platforms</div>
+    <div class="tool-card"><span class="icon">🤖</span>AI Productivity Tools</div>
+    <div class="tool-card"><span class="icon">📁</span>Google Drive / Dropbox</div>
+    <div class="tool-card"><span class="icon">⌨️</span>Medical Transcription Software</div>
+  </div>
+</section>
+
+<div class="contact-section" id="contact">
+  <div class="contact-inner">
+    <span class="section-label">Let's Work Together</span>
+    <h2 class="section-title" style="color:white;">Ready to Support Your Healthcare Practice</h2>
+    <p>Whether you need a dedicated medical virtual assistant, healthcare administrator, or remote support specialist — I'm available across multiple time zones and ready to bring efficiency and care to your team.</p>
+    <div class="contact-grid">
+      <a href="mailto:Miriamaudu57@gmail.com" class="contact-chip">📧 Miriamaudu57@gmail.com</a>
+      <a href="tel:+2347019845778" class="contact-chip">📞 +2347019845778</a>
+      <a href="https://linkedin.com/in/mariamaudumshelia" target="_blank" class="contact-chip">💼 LinkedIn Profile</a>
+      <span class="contact-chip">📍 Abuja, Nigeria</span>
+    </div>
+    <div class="availability-badge">
+      <div class="green-dot"></div>
+      Available across multiple time zones — Open to remote opportunities worldwide
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 Mariam Audu Mshelia · Medical Virtual Assistant & Healthcare Administrative Specialist · Abuja, Nigeria</p>
+  <p style="margin-top: 6px;">
+    <a href="mailto:Miriamaudu57@gmail.com">Miriamaudu57@gmail.com</a> ·
+    <a href="https://linkedin.com/in/mariamaudumshelia">LinkedIn</a>
+  </p>
+</footer>
+
+</body>
+</html>
